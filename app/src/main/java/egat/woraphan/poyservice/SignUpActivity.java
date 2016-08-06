@@ -1,11 +1,17 @@
 package egat.woraphan.poyservice;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.RequestBody;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -75,6 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                 avata3RadioButton.isChecked() ||
                 avata4RadioButton.isChecked()) {
             //Have Check
+            confirmValue();
 
         } else {
             //Uncheck
@@ -82,8 +89,49 @@ public class SignUpActivity extends AppCompatActivity {
             myAlert.myDialog(this, 1, "ยังไม่ได้เลือก Avata", "กรุณาเลือก Avata ด้วยนะคะ");
         }
 
-
-
     }   // clickSign
+
+    private void confirmValue() {
+
+        MyAlert myAlert = new MyAlert();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setIcon(myAlert.findAvata(Integer.parseInt(avataString))); //Integer.parseInt แปลงStringto Int
+        builder.setTitle("โปรดตรวจสอบข้อมูล");
+        builder.setMessage("Name = "+ nameString + "\n" +
+                            "User = " + userString + "\n" +
+                            "Password = " + passwordString);
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                uploadNewValueToServer();
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.show();
+
+    }   //confirmValue
+
+    private void uploadNewValueToServer() {
+
+        //Connect with PHP
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd", "true")
+                .add("Name", nameString)
+                .add("User", userString)
+                .add("Password", passwordString)
+                .add("Avata", avataString)
+                .build();
+
+    }   //uploadNewValue
 
 }   //Main Class
