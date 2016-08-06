@@ -7,6 +7,198 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="egat.woraphan.poyservice.SignUpActivity">
+    tools:context="egat.woraphan.poyservice.SignUpActivity"
+    android:background="@drawable/wallpapers_a_00">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/textView"
+        android:textSize="@dimen/h1"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/texthead" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/button3"
+        android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_above="@+id/button3"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:padding="15dp"
+        android:background="#82ffffff">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Name :"
+                android:id="@+id/textView2"
+                android:textSize="@dimen/h2"
+                android:layout_weight="1"
+                android:textColor="@color/text" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textColor="@color/text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="User :"
+                android:id="@+id/textView3"
+                android:textSize="@dimen/h2"
+                android:layout_weight="1"
+                android:textColor="@color/text" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText2"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textColor="@color/text" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Password :"
+                android:id="@+id/textView4"
+                android:textSize="@dimen/h2"
+                android:layout_weight="1"
+                android:textColor="@color/text" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText3"
+                android:layout_weight="2"
+                android:inputType="text"
+                android:textColor="@color/text" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avatar :"
+            android:id="@+id/textView5"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/text" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ragAvata"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton2"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton3"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton4"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButton5"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_weight="1"
+                android:src="@drawable/bird48" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_weight="1"
+                android:src="@drawable/doremon48" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView3"
+                android:layout_weight="1"
+                android:src="@drawable/kon48" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView4"
+                android:layout_weight="1"
+                android:src="@drawable/nobita48" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView5"
+                android:layout_weight="1"
+                android:src="@drawable/rat48" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
