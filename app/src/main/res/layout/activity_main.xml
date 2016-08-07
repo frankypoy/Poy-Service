@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:text="Sign In"
             android:id="@+id/button"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="clickSignIn" />
 
         <Button
             android:layout_width="wrap_content"
@@ -60,13 +61,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText4"
             android:hint="User :"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColorHint="@color/text" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editText5"
             android:hint="Password :"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHint="@color/text" />
     </LinearLayout>
 </RelativeLayout>
