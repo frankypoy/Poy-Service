@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Explicit
         private Context context;
-        private String myUserString, myPasswordString, truePasswordString, nameString;
+        private String myUserString, myPasswordString,
+                truePasswordString, nameString, avataString;
         //ตัวแปรค่าคงที่ ไม่ให้ตัวอื่นมาเปลี่ยน
         private static final String urlJSON = "http://swiftcodingthai.com/6aug/get_user_poy.php";
         private boolean statusABoolean = true;
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         truePasswordString = jsonObject.getString("Password");
                         nameString = jsonObject.getString("Name");
                         statusABoolean = false;
+                        avataString = jsonObject.getString("Avata");
 
                     } // if
                 } // for
@@ -109,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
                     //Password True
                     //Toast โวยวายแล้วหายไปเอง show text ข้างล่่าง
                     Toast.makeText(context, "Welcome " + nameString, Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
+                    intent.putExtra("Name", nameString);
+                    intent.putExtra("Avata", avataString);
+                    startActivity(intent);
+                    //ให้มันมี session time เช้ามาแล้ว login ใหม่
+                    finish();
+
                 } else {
                     //Password False
                     MyAlert myAlert = new MyAlert();
