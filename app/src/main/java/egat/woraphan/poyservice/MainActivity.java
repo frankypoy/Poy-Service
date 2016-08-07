@@ -9,18 +9,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private EditText userEditText, passwordEditText;
     private String userString, passwordString;
-    //ตัวแปรค่าคงที่ ไม่ให้ตัวอื่นมาเปลี่ยน
-    private static final String urlJSON = "http://swiftcodingthai.com/6aug/get_user_poy.php";
 
 
     @Override
@@ -40,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Explicit
         private Context context;
-        private String myUserString, myPasswordString;
+        private String myUserString, myPasswordString, truePasswordString, nameString;
+        //ตัวแปรค่าคงที่ ไม่ให้ตัวอื่นมาเปลี่ยน
+        private static final String urlJSON = "http://swiftcodingthai.com/6aug/get_user_poy.php";
+        private boolean statusABoolean = true;
 
         //Constructor
         public SynchronizeUser(Context context,
@@ -79,7 +84,42 @@ public class MainActivity extends AppCompatActivity {
 
             //Show Debug
             Log.d("7AugV1", "JSON ==> " + s);
-        }
+
+            try {
+                //ใช้ตัดคำ
+                JSONArray jsonArray = new JSONArray(s);
+                for (int i=0;i<jsonArray.length();i+=1) {
+                    //ตัวชี้
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    if (myUserString.equals(jsonObject.getString("User"))) {
+
+                        truePasswordString = jsonObject.getString("Password");
+                        nameString = jsonObject.getString("Name");
+                        statusABoolean = false;
+
+                    } // if
+                } // for
+
+                if (statusABoolean) {
+                    MyAlert myAlert = new MyAlert();
+                    myAlert.myDialog(context, 4, "ไม่มี User นี้",
+                            "ไม่มี " + myUserString + " ในฐานข้อมูลของเรา");
+                } else if (passwordString.equals(truePasswordString)) {
+                    //Password True
+                    //Toast โวยวายแล้วหายไปเอง show text ข้างล่่าง
+                    Toast.makeText(context, "Welcome " + nameString, Toast.LENGTH_SHORT).show();
+                } else {
+                    //Password False
+                    MyAlert myAlert = new MyAlert();
+                    myAlert.myDialog(context, 4, "Password False", "Please Try Again Password False");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } // onPost
     } // SynUser Class
 
 
